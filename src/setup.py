@@ -2,9 +2,9 @@ from setuptools import setup
 
 
 setup(
-    name="ml-cat-recognition",
+    name="cats-vs-dogs",
     version="0.0.1",
-    packages=["ml_cat_recognition"],
+    packages=["cats_vs_dogs"],
     install_requires=[],
     entry_points={
         "console_scripts": [
