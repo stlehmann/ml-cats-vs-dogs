@@ -9,7 +9,7 @@ import zipfile
 
 # %%
 root_p = here(".", [".here"])
-data_p = root_p / "data"
+data_p = root_p / "data/original"
 
 # create data dir if not exists
 if not data_p.is_dir():
