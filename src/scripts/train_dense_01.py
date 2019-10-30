@@ -9,28 +9,12 @@ import numpy as np
 import pyprojroot
 import tensorflow as tf
 
+from cats_vs_dogs.models import create_dense_model
+
 sns.set()
 
 # %%
 data_p = pyprojroot.here("data/data.h5", [".here"])
-
-def create_model(
-    input_shape=(64, 64),
-    n_hidden: int = 1,
-    n_units: int = 7,
-    activation="relu",
-    optimizer="adam",
-    loss="binary_crossentropy",
-    metrics=["accuracy"],
-):
-    model = tf.keras.models.Sequential()
-    model.add(tf.keras.layers.Flatten(input_shape=input_shape))
-    for _ in range(n_hidden):
-        model.add(tf.keras.layers.Dense(n_units, activation=activation))
-    model.add(tf.keras.layers.Dense(1, activation="sigmoid"))
-    model.compile(optimizer=optimizer, loss=loss, metrics=metrics)
-    return model
-
 
 # %%
 
@@ -60,13 +44,3 @@ plt.ylabel("accuracy")
 plt.legend()
 plt.show()
 
-# %%
-
-# index = np.random.choice(np.arange(200))
-#
-# f = h5py.File(data_p, "r")
-# img = f["train_data"][index][:] * 255.0
-# plt.imshow(img, cmap="gray")
-# plt.show()
-#
-# print(model.predict(f["train_data"][index].reshape(1, 64, 64)))

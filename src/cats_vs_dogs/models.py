@@ -1,18 +1,21 @@
+from __future__ import annotations
+
 from typing import Tuple, Callable, Union, Iterable
 
 import tensorflow as tf
 
 
 def create_dense_model(
-    input_shape: Tuple[int, int]=(64, 64),
+    input_shape: Tuple[int, int] = (64, 64),
     n_hidden: int = 1,
     n_units: int = 7,
-    activation: Union[str, Callable]="relu",
-    optimizer: Union[str, tf.keras.optimizers.Optimizer]="adam",
-    loss: Union[str, tf.keras.losses.Loss]="binary_crossentropy",
-    metrics: Iterable[Union[str, tf.keras.metrics.Metric]]=("accuracy",),
+    activation: Union[str, Callable] = "relu",
+    optimizer: Union[str, tf.keras.optimizers.Optimizer] = "adam",
+    loss: Union[str, tf.keras.losses.Loss] = "binary_crossentropy",
+    metrics: Iterable[Union[str, tf.keras.metrics.Metric]] = ("accuracy",),
 ) -> tf.keras.Model:
     """Create a dense model.
+
     :param input_shape: input shape
     :param n_hidden: number of hidden layers
     :param n_units: units per hidden layer
