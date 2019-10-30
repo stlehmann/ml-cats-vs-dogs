@@ -1,7 +1,4 @@
 # %%
-from __future__ import annotations
-
-from typing import List
 import matplotlib.pyplot as plt
 import seaborn as sns
 import h5py
@@ -12,6 +9,11 @@ import tensorflow as tf
 from cats_vs_dogs.models import create_dense_model
 
 sns.set()
+
+# random seed
+SEED = 42
+np.random.seed(SEED)
+tf.random.set_seed(SEED)
 
 # %%
 data_p = pyprojroot.here("data/data.h5", [".here"])
@@ -25,7 +27,12 @@ y_train = file["train_labels"]
 X_test = file["test_data"][:]
 y_test = file["test_labels"][:]
 
-model = create_model(optimizer=tf.keras.optimizers.Adam(lr=0.00005), n_units=10, n_hidden=1)
+model = create_dense_model(
+    optimizer=tf.keras.optimizers.Adam(lr=0.00005),
+    n_units=10,
+    n_hidden=1,
+    metrics=["accuracy"],
+)
 
 history = model.fit(
     x=X_train,
@@ -43,4 +50,3 @@ plt.xlabel("epochs")
 plt.ylabel("accuracy")
 plt.legend()
 plt.show()
-

@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Tuple, Callable, Union, Iterable
+from typing import Tuple, Callable, Union, Iterable, List
 
 import tensorflow as tf
 
@@ -12,7 +12,7 @@ def create_dense_model(
     activation: Union[str, Callable] = "relu",
     optimizer: Union[str, tf.keras.optimizers.Optimizer] = "adam",
     loss: Union[str, tf.keras.losses.Loss] = "binary_crossentropy",
-    metrics: Iterable[Union[str, tf.keras.metrics.Metric]] = ("accuracy",),
+    metrics=None,
 ) -> tf.keras.Model:
     """Create a dense model.
 
