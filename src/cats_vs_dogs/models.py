@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Tuple, Callable, Union, Iterable, List
+from typing import Tuple, Callable, Union
 
 import tensorflow as tf
 
